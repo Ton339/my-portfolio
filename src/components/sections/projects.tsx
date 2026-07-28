@@ -19,7 +19,7 @@ const projects = [
       "Authored and maintained comprehensive Software Requirement Specifications (SRS) documentation.",
       "Developed the core backend scoring engine and core calculation algorithms for the assessment questionnaire.",
     ],
-    tech: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "Figma"],
+    tech: ["Laravel","React","Inertia","daisyUI" ,,"MySQL", "Figma"],
     featured: true,
   },
 ];
