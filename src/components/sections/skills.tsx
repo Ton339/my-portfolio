@@ -4,11 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
+import { Code2, MonitorSmartphone, Server, Database, Terminal, Palette } from "lucide-react";
 
 const skillCategories = [
   {
     id: "languages",
     label: "Languages",
+    icon: Code2,
     skills: [
       { name: "JavaScript", color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400" },
       { name: "TypeScript", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
@@ -22,6 +24,7 @@ const skillCategories = [
   {
     id: "frontend",
     label: "Frontend",
+    icon: MonitorSmartphone,
     skills: [
       { name: "Next.js", color: "bg-foreground/10 text-foreground" },
       { name: "Tailwind CSS", color: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400" },
@@ -32,6 +35,7 @@ const skillCategories = [
   {
     id: "backend",
     label: "Backend",
+    icon: Server,
     skills: [
       { name: "NestJS", color: "bg-red-500/10 text-red-600 dark:text-red-400" },
       { name: "Laravel", color: "bg-red-500/10 text-red-600 dark:text-red-400" },
@@ -40,6 +44,7 @@ const skillCategories = [
   {
     id: "database",
     label: "Database & ORM",
+    icon: Database,
     skills: [
       { name: "PostgreSQL", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
       { name: "MySQL", color: "bg-orange-500/10 text-orange-600 dark:text-orange-400" },
@@ -50,6 +55,7 @@ const skillCategories = [
   {
     id: "devops",
     label: "DevOps & API",
+    icon: Terminal,
     skills: [
       { name: "Docker", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
       { name: "Postman", color: "bg-orange-500/10 text-orange-600 dark:text-orange-400" },
@@ -60,6 +66,7 @@ const skillCategories = [
   {
     id: "design",
     label: "Design",
+    icon: Palette,
     skills: [
       { name: "Figma", color: "bg-purple-500/10 text-purple-600 dark:text-purple-400" },
       { name: "Adobe Photoshop", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
@@ -84,14 +91,15 @@ export function SkillsSection() {
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <Tabs defaultValue="languages" className="w-full">
-            <TabsList className="flex flex-wrap h-auto gap-1 bg-transparent p-0 mb-8">
+          <Tabs defaultValue="languages" className="w-full min-h-50">
+            <TabsList variant="line" className="flex flex-wrap h-auto gap-2 bg-transparent p-0 mb-8">
               {skillCategories.map((cat) => (
                 <TabsTrigger
                   key={cat.id}
                   value={cat.id}
-                  className="data-[state=active]:bg-accent-blue/10 data-[state=active]:text-accent-blue rounded-full px-4 py-2 text-sm transition-all"
+                  className="data-[state=active]:bg-accent-blue/10 data-[state=active]:text-accent-blue data-active:bg-accent-blue/10 data-active:text-accent-blue data-active:border-transparent data-active:shadow-none dark:data-active:border-transparent dark:data-active:bg-accent-blue/10 rounded-full px-2 py-2 text-sm transition-all border-transparent flex-none"
                 >
+                  <cat.icon className="w-4 h-4 mr-1.5" />
                   {cat.label}
                 </TabsTrigger>
               ))}

@@ -84,7 +84,7 @@ export function HeroSection() {
             <Button
               nativeButton={false}
               render={<a href="tel:0806101617" />}
-              variant="ghost"
+              variant="outline"
               size="lg"
               className="rounded-full px-8"
             >
