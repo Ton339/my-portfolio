@@ -22,8 +22,8 @@ export function FooterSection() {
           {/* Brand */}
           <div className="text-center sm:text-left">
             <a href="#" className="font-bold text-lg tracking-tight">
-              <span className="gradient-text">Ton</span>
-              <span className="text-muted-foreground font-normal">.dev</span>
+              <span className="gradient-text">sithachad</span>
+              <span className="text-muted-foreground font-normal">.site</span>
             </a>
             <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1 justify-center sm:justify-start">
               Built with <Heart className="h-3 w-3 text-red-400 fill-red-400" /> using Next.js & shadcn/ui
