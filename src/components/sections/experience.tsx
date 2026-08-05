@@ -19,7 +19,7 @@ const experiences = [
     ],
   },
   {
-    company: "GREEN HUB CO.,LTD & Growth More Corporation Co., Ltd.",
+    company: "GREEN HUB CO.,LTD & PROFIT MORE GROWTH Co., Ltd.",
     position: "Full-Stack Developer",
     period: "May 2025 – June 2025",
     type: "Development",
