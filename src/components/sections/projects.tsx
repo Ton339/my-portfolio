@@ -6,7 +6,20 @@ import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
 import { ExternalLink, Calendar, Users } from "lucide-react";
 
-const projects = [
+type Project = {
+  title: string;
+  client: string;
+  period?: string;
+  description: string;
+  roles: string[];
+  highlights: string[];
+  tech: string[];
+  featured?: boolean;
+  github?: string;
+  demo?: string;
+};
+
+const projects: Project[] = [
   {
     title: "Life Path Simulator",
     client: "TTT Brother Co., Ltd.",
@@ -19,8 +32,40 @@ const projects = [
       "Authored and maintained comprehensive Software Requirement Specifications (SRS) documentation.",
       "Developed the core backend scoring engine and core calculation algorithms for the assessment questionnaire.",
     ],
-    tech: ["Laravel","React","Inertia","daisyUI" ,,"MySQL", "Figma"],
+    tech: ["Laravel","React","Inertia","daisyUI", "MySQL", "Figma"],
     featured: true,
+  },
+  {
+    title: "Death Expectancy (นาฬิกาชีวิต)",
+    client: "Personal Project",
+    period: "April 2026",
+    description:
+      "An interactive, cinematic web experience made to accompany a film. Visitors answer eight lifestyle questions and watch a clock count down their estimated remaining days, in a visually driven, atmospheric Thai-language experience.",
+    roles: ["UX/UI Design", "Front-end Developer"],
+    highlights: [
+      "Designed a step-by-step flow with custom wheel pickers for age, weight, height, sleep, diet, alcohol, smoking and exercise.",
+      "Built the remaining-days calculation as a Next.js Server Action, combining BMI and lifestyle modifiers.",
+      "Crafted an animated clock and three result screens whose tone, color and copy shift with the outcome, using Framer Motion.",
+      "Deployed on Vercel with Analytics and Speed Insights.",
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "shadcn/ui", "Vercel"],
+    github: "https://github.com/Ton339/death-expectancy",
+    demo: "https://death-expectancy.vercel.app",
+  },
+  {
+    title: "CKAN Weeb",
+    client: "88831765 Data Privacy and Governance",
+    period: "October 2026",
+    description:
+      "An open-source CKAN data portal, forked and customized to catalog anime datasets for the Data Privacy and Governance course, to practice publishing a public-interest open dataset.",
+    roles: ["Data Governance", "Platform Setup"],
+    highlights: [
+      "Set up the full CKAN stack with Docker Compose: CKAN, PostgreSQL, Solr, Redis, DataPusher and an NGINX HTTPS proxy.",
+      "Prepared datasets for publishing: a ~10 MB anime catalog (genre, studio, score, rank, popularity) and a cleaned list of the most-favorited anime characters.",
+      "Rebranded the portal with a custom logo, banner, favicon, footer and homepage layout.",
+    ],
+    tech: ["CKAN", "Docker", "PostgreSQL", "Solr", "Redis", "NGINX"],
+    github: "https://github.com/Ton339/ckan-weeb",
   },
 ];
 
@@ -61,9 +106,13 @@ export function ProjectsSection() {
                       <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
                         <Users className="h-3.5 w-3.5" />
                         <span>{project.client}</span>
-                        <span>•</span>
-                        <Calendar className="h-3.5 w-3.5" />
-                        <span>{project.period}</span>
+                        {project.period && (
+                          <>
+                            <span>•</span>
+                            <Calendar className="h-3.5 w-3.5" />
+                            <span>{project.period}</span>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -73,7 +122,9 @@ export function ProjectsSection() {
                   </p>
 
                   {/* Roles */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div
+                    className={`flex flex-wrap gap-2 ${project.roles.length ? "mb-6" : ""}`}
+                  >
                     {project.roles.map((role) => (
                       <Badge
                         key={role}
@@ -86,7 +137,9 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Highlights */}
-                  <ul className="space-y-2 mb-6">
+                  <ul
+                    className={`space-y-2 ${project.highlights.length ? "mb-6" : ""}`}
+                  >
                     {project.highlights.map((highlight, i) => (
                       <li
                         key={i}
@@ -110,6 +163,44 @@ export function ProjectsSection() {
                           {t}
                         </Badge>
                       ))}
+                    </div>
+                    <div className="flex gap-1">
+                      {project.demo && (
+                        <Button
+                          nativeButton={false}
+                          render={
+                            <a
+                              href={project.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            />
+                          }
+                          variant="ghost"
+                          size="sm"
+                          className="text-accent-blue hover:text-accent-blue"
+                        >
+                          <ExternalLink className="mr-1 h-3 w-3" />
+                          Live Demo
+                        </Button>
+                      )}
+                      {project.github && (
+                        <Button
+                          nativeButton={false}
+                          render={
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            />
+                          }
+                          variant="ghost"
+                          size="sm"
+                          className="text-accent-blue hover:text-accent-blue"
+                        >
+                          <ExternalLink className="mr-1 h-3 w-3" />
+                          GitHub
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </CardContent>
